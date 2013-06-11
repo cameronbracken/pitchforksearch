@@ -2,3 +2,4 @@ config.*
 *.pyc
 .DS_Store
 pitchforksearch/static/bootstrap/*
+pitchforksearch/static/tablesorter/*
