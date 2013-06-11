@@ -1,0 +1,50 @@
+<%inherit file="layout.html"/>
+
+<%def name="table_row(values)">
+	<tr>
+    % for i,value in enumerate(values):
+    	% if i == len(values)-1:
+    		<td><a href="${value}">${value}</a></td>
+    	% else:
+    		<td>${value}</td>
+    	% endif 
+    % endfor
+    </tr>
+</%def>
+
+<%def name="table_row_head(columns)">
+	<tr>
+    % for column in columns:
+    	<th>${column}</th>
+    % endfor
+    </tr>
+</%def>
+
+<%def name="make_table(columns,table_data)">
+	<table class='table table-striped'>
+	<thead>
+		${table_row_head(columns)}
+	</thead>
+		% for row in table_data:
+			${table_row(row)}
+		% endfor
+	</table>
+</%def>
+
+<%doc> 
+	"result_set" is a list of search results, each element the the 
+	full data from a query for one search string.
+</%doc>
+<%block name="table">
+	  % if get_flashed_messages():
+	    <ul class=flashes>
+	    % for message in get_flashed_messages() :
+	      <li>${ message }</li>
+	    % endfor 
+	    </ul>
+	  % endif
+	%for result,title in zip(result_set,titles):
+		<h3>${title}</h3>
+		${make_table(columns, result)}
+	%endfor
+</%block>
