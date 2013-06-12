@@ -6,4 +6,5 @@ A Flask app for searching music review data.
     - Unpack into `static/` directory (http://twitter.github.io/bootstrap/index.html)
 2. TableSorter 
     - Clone into static (https://github.com/Mottie/tablesorter)
+    - This app uses a cutoomized bootsrtap theme and tablesorter options
     
