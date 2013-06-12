@@ -36,10 +36,6 @@
         ${ subfield.label }
       </label>
       % endfor
-  
-      ##<label class="checkbox">
-      ##    ${ form.table_per_artist(checked='') } ${ form.table_per_artist.label }
-      ##</label>
 
       <button type="submit" class="btn">Search</button>
     </form>
@@ -63,6 +59,6 @@
     <!-- tablesorter plugin -->
       <script type="text/javascript" src="${ url_for('static', filename='tablesorter/js/jquery.tablesorter.min.js') }"></script>
       <script type="text/javascript" src="${ url_for('static', filename='tablesorter/js/jquery.tablesorter.widgets.min.js') }"></script>
-      <script type="text/javascript" src="${ url_for('static', filename='js/tablesorter-custom.js') }">
+      <script type="text/javascript" src="${ url_for('static', filename='js/tablesorter-custom.js') }"></script>
   </body>
 </html>

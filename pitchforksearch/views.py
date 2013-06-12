@@ -12,10 +12,16 @@ import MySQLdb as mdb
 import MySQLdb.cursors as cursors
 
 #TODO 
-# 2. sorting 
-# 3. separate artist per table
-# 4. about page
-# 5. message when zero results
+# 1. about page
+# 2. message when zero results
+# 3. search by date
+# 4. no artist defaults to all 
+# 5. Add searching and sorting tips
+# 6. User login for saved searches
+# 7. logging 
+# 8. Spam protection 
+# 9. Display number of results by default 
+# 10. Default sorting
 
 # mako initilization
 app.template_folder = "templates"
@@ -27,12 +33,11 @@ class SearchForm(Form):
     score_lower = fields.DecimalField("Score Lower Limit", [validators.NumberRange(min=0.0, max=10.0)], places=1, default=0.0)
     score_upper = fields.DecimalField("Score Upper Limit", [validators.NumberRange(min=0.0, max=10.0)], places=1, default=10.0)
     sort_option = fields.RadioField("Sort by:", choices=[("date_reviewed","Date"),("score","Score")], default='date_reviewed')
-    #table_per_artist = fields.BooleanField("One table per artist")
 
 @app.route('/', methods=("GET", "POST"))
 def index():
 	# limit to 100 results
-	limit = 100
+	limit = 1000
 
 	form = SearchForm(csrf_enabled=True)
 	if form.validate_on_submit():
