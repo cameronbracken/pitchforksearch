@@ -27,7 +27,7 @@ class SearchForm(Form):
     score_lower = fields.DecimalField("Score Lower Limit", [validators.NumberRange(min=0.0, max=10.0)], places=1, default=0.0)
     score_upper = fields.DecimalField("Score Upper Limit", [validators.NumberRange(min=0.0, max=10.0)], places=1, default=10.0)
     sort_option = fields.RadioField("Sort by:", choices=[("date_reviewed","Date"),("score","Score")], default='date_reviewed')
-    table_per_artist = fields.BooleanField("One table per artist")
+    #table_per_artist = fields.BooleanField("One table per artist")
 
 @app.route('/', methods=("GET", "POST"))
 def index():
