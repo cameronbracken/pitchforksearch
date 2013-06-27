@@ -29,14 +29,6 @@
       ${ form.score_lower(class_="input-mini",placeholder="0.0") }
       ${ form.score_upper(class_="input-mini",placeholder="10.0") }
 
-      ${ form.sort_option.label }
-      % for subfield in form.sort_option:
-      <label class="radio">
-        ${ subfield }
-        ${ subfield.label }
-      </label>
-      % endfor
-
       <button type="submit" class="btn">Search</button>
     </form>
 
@@ -49,7 +41,10 @@
       </div>
       % endfor
     % endfor
-    
+    <p>
+      Tip: Click on a column name to sort on that column. Click multiple column names while holding the shift key to sort on more than one column (eg. Clicking artist then score while holding the shift key will show each artists albums from highest rating to lowest rating).
+    </p>
+
     <%block name="table"/>
 
     <p class="muted">
