@@ -1,0 +1,41 @@
+<%inherit file="layout.html"/>
+
+<%block name="search">
+<form method="POST" action="." class='form-inline form-horizontal'>
+  ##<label class="text-info">Separate multiple inputs with a comma (eg. "Beach House, Grizzly Bear")</label>
+  
+  
+  ${ form.csrf_token }
+  ${ form.artist.label }
+  ${ form.artist(placeholder="Can be a partial name") }
+
+  <label for="score_lower">Score Range</label>
+  ${ form.score_lower(class_="input-mini",placeholder="0.0") }
+  ${ form.score_upper(class_="input-mini",placeholder="10.0") }
+
+  <label for="year_lower">Year Range</label>
+  ${ form.year_lower(class_="input-mini",placeholder="") }
+  ${ form.year_upper(class_="input-mini",placeholder="") }
+
+  ${ form.reissues.label }
+  ${ form.reissues(style="width:60px;")}
+
+  <button type="submit" class="btn">Search</button>
+</form>
+
+<!-- Form validation errors (if any) -->
+% for error,messages in dict.iteritems(form.errors):
+  % for message in messages:
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>${error}, ${message}</strong> 
+  </div>
+  % endfor
+% endfor
+<p>
+  Tip: Click on a column name to sort on that column. Click multiple column names while holding the shift key to sort on more than one column (eg. Clicking artist then score while holding the shift key will show each artists albums from highest rating to lowest rating).
+</p>
+
+<%block name="table"/>
+
+</%block>

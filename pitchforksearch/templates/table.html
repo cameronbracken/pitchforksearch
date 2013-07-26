@@ -1,4 +1,4 @@
-<%inherit file="layout.html"/>
+<%inherit file="search.html"/>
 
 <%def name="table_row(values)">
 	<tr>
@@ -21,7 +21,7 @@
 </%def>
 
 <%def name="make_table(columns,table_data)">
-	<table id='resulttable' class='tablesorter'>
+	<table id='resulttable' class='tablesorter table'>
 	<thead>
 		${table_row_head(columns)}
 	</thead>

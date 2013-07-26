@@ -36,10 +36,10 @@ $(function() {
 
 });
 
-$(document).ready(function() 
-{ 
-    $("table").tablesorter({ 
-      sortList: [[1,0],[0,0]] 
+$(document).ready(function()
+{
+    $("table").tablesorter({
+      sortList: [[1,0],[0,0]]
     });
-} 
+}
 );
