@@ -9,8 +9,9 @@ from flask.ext.wtf import Form
 from wtforms import fields, validators
 from wtforms.validators import Required, NumberRange
 
-import MySQLdb as mdb
+#import MySQLdb as mdb
 #import MySQLdb.cursors as cursors
+import sqlite3 as mdb
 
 import datetime as dt
 from datetime import datetime
@@ -96,7 +97,7 @@ def build_query(artist, score_lower, score_upper, year_lower, year_upper, reissu
     else:
         q += " where artist like '%%%s%%' and" % (artist)
 
-    q += " year(date_released) >= %s and year(date_released) <= %s and" % (year_lower, year_upper)
+    q += " year_released >= %s and year_released <= %s and" % (year_lower, year_upper)
 
     q += " score >= %s and score <= %s" % (score_lower, score_upper)
     if(not(int(reissues))):
@@ -116,12 +117,13 @@ def execute_query(query, cur):
 
     except mdb.Error, e:
 
-        err = "Error %d: %s" % (e.args[0], e.args[1])
+        err = ""#"Error %d: %s" % (e.args[0], e.args[1])
         return False, err + query
 
 
 def connect_db():
-    con = mdb.connect(app.config['HOST'], app.config['DBUSER'], app.config['DBPASS'], app.config['DBNAME'], charset='utf8')
+    #con = mdb.connect(app.config['HOST'], app.config['DBUSER'], app.config['DBPASS'], app.config['DBNAME'], charset='utf8')
     #, cursorclass=cursors.OrderedDictCursor)
+    con = mdb.connect('pitchforksearch/data/reviews.db')
     cur = con.cursor()
     return cur
